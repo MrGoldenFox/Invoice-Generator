@@ -1,0 +1,60 @@
+@import 'tailwindcss';
+
+body {
+	margin: 0;
+	padding: 0;
+	color: var(--color-body);
+	background-color: var(--color-background);
+}
+
+@theme {
+	--color-primary: #040813;
+	--color-body: #0a1237;
+	--color-background: #f7fcfc;
+	--color-background-accent: #ffffff;
+	--color-border: #00000015;
+	--color-accent: #263684;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+	font-weight: 900;
+	@apply text-[8.5vw] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
+}
+
+h2 {
+	font-weight: 700;
+}
+
+h3 {
+	font-weight: 600;
+}
+
+h4,
+h5,
+h6 {
+	font-weight: 500;
+}
+
+p {
+	@apply text-body;
+	font-weight: 400;
+	font-family: 'Inter', sans-serif;
+}
+
+button,
+a {
+	cursor: pointer;
+}
+
+.card {
+	@apply bg-background-accent border-1 border-border p-4 rounded-md md:p-8;
+}
