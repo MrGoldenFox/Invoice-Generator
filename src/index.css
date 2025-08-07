@@ -45,9 +45,16 @@ h6 {
 }
 
 p {
-	@apply text-body;
-	font-weight: 400;
+	@apply text-body font-normal;
 	font-family: 'Inter', sans-serif;
+}
+
+.modal-p {
+	@apply text-white font-light;
+}
+
+.modal-headers {
+	@apply font-semibold;
 }
 
 button,
