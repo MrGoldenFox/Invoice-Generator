@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import blank from '/assets/blank-invoice.png'
 
 export default function Hero() {
@@ -8,9 +9,12 @@ export default function Hero() {
 				<p className='text-balance max-w-96'>
 					Create and send professional invoices easily with our online tool
 				</p>
-				<button className='max-w-40 bg-accent text-background py-2 rounded-md'>
+				<Link
+					to={'/create-invoice'}
+					className='max-w-40 bg-accent text-background py-2 rounded-md flex justify-center items-center'
+				>
 					Create Invoice
-				</button>
+				</Link>
 			</article>
 			<img src={blank} alt='blank' className='md:w-1/4' />
 		</section>
