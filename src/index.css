@@ -50,7 +50,7 @@ p {
 }
 
 .modal-p {
-	@apply text-white font-light;
+	@apply text-white font-normal tracking-wide text-balance;
 }
 
 .modal-headers {

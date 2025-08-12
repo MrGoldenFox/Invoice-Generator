@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { Plus } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import {
 	additional,
 	billTo,
@@ -10,26 +11,51 @@ import FormArticle from './FormArticle'
 import Modal from './Modal'
 
 export default function FormInvoice() {
-	const [modal, setModal] = useState(true)
-	const [invoice, setInvoice] = useState({})
+	const [modal, setModal] = useState(false)
+	const [invoice, setInvoice] = useState({ services: [] })
+	const [services, setServices] = useState([crypto.randomUUID()])
+
+	useEffect(() => {
+		document.body.style.overflowY = modal ? 'hidden' : 'auto'
+	}, [modal])
 
 	function handleSubmit(e) {
 		e.preventDefault()
 
-		const form = e.target
-		const formData = new FormData(form)
-
+		const formData = new FormData(e.target)
 		const data = {}
+		const servicesArr = []
 
 		for (let [key, value] of formData.entries()) {
-			data[key] = value
+			const m = key.match(/^service-(\d+)-(.+)$/)
+			if (m) {
+				const idx = Number(m[1])
+				const field = m[2]
+				if (!servicesArr[idx]) servicesArr[idx] = {}
+
+				const coerced = ['quantity', 'rate'].includes(field)
+					? Number(value)
+					: value
+				servicesArr[idx][field] = coerced
+			} else {
+				data[key] = value
+			}
 		}
 
-		data.logoPreview = URL.createObjectURL(formData.get('logo'))
+		const logo = formData.get('logo')
+		if (logo instanceof File && logo.size > 0) {
+			data.logoPreview = URL.createObjectURL(logo)
+		}
+
+		data.services = servicesArr.filter(Boolean)
 
 		setInvoice(data)
 		setModal(true)
-		console.log(JSON.stringify(invoice))
+		console.log(data)
+	}
+
+	function addNewService() {
+		setServices(prev => [...prev, crypto.randomUUID()])
 	}
 
 	return (
@@ -41,7 +67,40 @@ export default function FormInvoice() {
 				/>
 				<FormArticle title='Enter invoice details' data={invoiceDetails} />
 				<FormArticle title='Enter bill to' data={billTo} />
-				<FormArticle title='Enter service' data={serviceInput} />
+				<div>
+					<div className='flex items-center justify-between my-5'>
+						<h2 className='text-[6.5vw] sm:text-2xl md:text-3xl xl:text-4xl'>
+							Create new service
+						</h2>
+						<button
+							className='p-1 rounded bg-accent text-background flex gap-1 items-center'
+							onClick={addNewService}
+							type='button'
+						>
+							<Plus />
+							<div className='hidden md:block text-background font-bold'>
+								Create new service
+							</div>
+						</button>
+					</div>
+					<ul>
+						{services.map((id, i) => (
+							<li key={id}>
+								<FormArticle
+									title={`Service# ${i + 1}`}
+									data={serviceInput.map(field => ({
+										...field,
+										name: `service-${i}-${field.id}`,
+									}))}
+									services={services}
+									removeService={() =>
+										setServices(prev => prev.filter(s => s !== id))
+									}
+								/>
+							</li>
+						))}
+					</ul>
+				</div>
 				<FormArticle
 					title='Enter additional information'
 					data={additional}

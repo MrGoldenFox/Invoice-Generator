@@ -94,7 +94,7 @@ export const billTo = [
 export const serviceInput = [
 	{
 		type: 'text',
-		id: 'service_name',
+		id: 'name',
 		label: 'Service name',
 		placeholder: 'e.g. Web Design',
 		maxLength: 50,
@@ -102,7 +102,7 @@ export const serviceInput = [
 	},
 	{
 		type: 'text',
-		id: 'service_description',
+		id: 'description',
 		label: 'Service description',
 		placeholder: 'e.g. Full website design with responsive layout',
 		maxLength: 150,
@@ -110,7 +110,7 @@ export const serviceInput = [
 	},
 	{
 		type: 'number',
-		id: 'service_qty',
+		id: 'hours',
 		label: 'Quantity / Hours',
 		placeholder: 'e.g. 10',
 		max: 1000,
@@ -118,7 +118,7 @@ export const serviceInput = [
 	},
 	{
 		type: 'number',
-		id: 'service_rate',
+		id: 'rate',
 		label: 'Rate (USD)',
 		placeholder: 'e.g. 100',
 		max: 100000,
