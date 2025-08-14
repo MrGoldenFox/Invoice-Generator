@@ -1,10 +1,12 @@
 import { Clock, DollarSign } from 'lucide-react'
 import { useRef } from 'react'
 import { createPortal } from 'react-dom'
-import LoadBtn from './ui/LoadBtn'
-import SaveBtn from './ui/SaveBtn'
+import { useModal } from '../../context/ModalContext'
+import LoadBtn from '../ui/LoadBtn'
+import SaveBtn from '../ui/SaveBtn'
 
-function Modal({ setModal, invoice }) {
+function Modal({ invoice }) {
+	const { closeModal } = useModal()
 	const overlayRef = useRef(null)
 
 	const total = () => {
@@ -20,9 +22,9 @@ function Modal({ setModal, invoice }) {
 
 	return createPortal(
 		<div
-			className='fixed inset-0 flex justify-center items-center bg-black/60 z-50 backdrop-blur-md'
+			className='fixed inset-0 flex justify-center items-center z-50 bg-black/5 backdrop-blur-xs'
 			ref={overlayRef}
-			onClick={e => e.target === overlayRef.current && setModal(false)}
+			onClick={e => e.target === overlayRef.current && closeModal()}
 		>
 			<section className='max-w-11/12 max-h-11/12 w-11/12 h-11/12 lg:w-auto lg:h-11/12 bg-background text-xs lg:aspect-210/297 flex flex-col'>
 				<header className='p-4 flex items-center justify-between gap-5 bg-accent'>
@@ -130,7 +132,7 @@ function Modal({ setModal, invoice }) {
 				<footer className='bg-accent text-background p-4 flex justify-between'>
 					<button
 						className='py-1 px-3 bg-background rounded-md text-accent font-bold'
-						onClick={() => setModal(false)}
+						onClick={() => closeModal()}
 					>
 						Close
 					</button>

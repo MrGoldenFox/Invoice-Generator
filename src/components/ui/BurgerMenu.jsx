@@ -2,7 +2,7 @@ import { ArrowBigDown, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
-import { navLinks } from '../constants/Navigation'
+import { navLinks } from '../../constants/Navigation'
 
 export const BurgerMenu = () => {
 	const [menu, setMenu] = useState(false)

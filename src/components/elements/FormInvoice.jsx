@@ -1,23 +1,20 @@
 import { Plus } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {
 	additional,
 	billTo,
 	companyData,
 	invoiceDetails,
 	serviceInput,
-} from '../constants/FormInputs'
+} from '../../constants/FormInputs'
+import { useModal } from '../../context/ModalContext'
+import Modal from '../containers/Modal'
 import FormArticle from './FormArticle'
-import Modal from './Modal'
 
 export default function FormInvoice() {
-	const [modal, setModal] = useState(false)
+	const { isOpen, openModal } = useModal()
 	const [invoice, setInvoice] = useState({ services: [] })
 	const [services, setServices] = useState([crypto.randomUUID()])
-
-	useEffect(() => {
-		document.body.style.overflowY = modal ? 'hidden' : 'auto'
-	}, [modal])
 
 	function handleSubmit(e) {
 		e.preventDefault()
@@ -50,8 +47,7 @@ export default function FormInvoice() {
 		data.services = servicesArr.filter(Boolean)
 
 		setInvoice(data)
-		setModal(true)
-		console.log(data)
+		openModal()
 	}
 
 	function addNewService() {
@@ -111,7 +107,7 @@ export default function FormInvoice() {
 					Create invoice
 				</button>
 			</form>
-			{modal && <Modal setModal={setModal} invoice={invoice} />}
+			{isOpen && <Modal invoice={invoice} />}
 		</>
 	)
 }

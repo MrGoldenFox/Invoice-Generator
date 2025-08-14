@@ -1,4 +1,4 @@
-import FormInvoice from '../components/FormInvoice'
+import FormInvoice from '../components/elements/FormInvoice'
 
 export default function CreateInvoice() {
 	return (

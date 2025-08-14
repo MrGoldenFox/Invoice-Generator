@@ -3,7 +3,7 @@ import html2canvas from 'html2canvas'
 import { jsPDF } from 'jspdf'
 import { useRef, useState } from 'react'
 
-export default function LoadBtn({ invoice }) {
+export default function LoadBtn({ invoice, white_bg = false }) {
 	const [busy, setBusy] = useState(false)
 	const pageRef = useRef(null)
 
@@ -49,9 +49,9 @@ export default function LoadBtn({ invoice }) {
 				type='button'
 				onClick={download}
 				disabled={busy}
-				className='py-1 px-3 bg-background rounded-md text-accent font-bold disabled:opacity-50'
+				className={`py-1 px-3 bg-accent rounded-md text-background border-1 border-background/20 disabled:opacity-50`}
 			>
-				{busy ? 'Preparing…' : 'Load on device'}
+				{busy ? 'Preparing…' : 'Download'}
 			</button>
 
 			{/* Hidden A4 page to render */}
