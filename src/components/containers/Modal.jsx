@@ -1,9 +1,9 @@
 import { Clock, DollarSign } from 'lucide-react'
 import { useRef } from 'react'
 import { createPortal } from 'react-dom'
-import { useModal } from '../../context/ModalContext'
-import LoadBtn from '../ui/LoadBtn'
-import SaveBtn from '../ui/SaveBtn'
+import { useModal } from '../../context/ModalContext.jsx'
+import LoadBtn from '../ui/LoadBtn.jsx'
+import SaveBtn from '../ui/SaveBtn.jsx'
 
 function Modal({ invoice }) {
 	const { closeModal } = useModal()

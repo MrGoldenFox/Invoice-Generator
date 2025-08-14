@@ -7,9 +7,9 @@ import {
 	invoiceDetails,
 	serviceInput,
 } from '../../constants/FormInputs'
-import { useModal } from '../../context/ModalContext'
-import Modal from '../containers/Modal'
-import FormArticle from './FormArticle'
+import { useModal } from '../../context/ModalContext.jsx'
+import Modal from '../containers/Modal.jsx'
+import FormArticle from './FormArticle.jsx'
 
 export default function FormInvoice() {
 	const { isOpen, openModal } = useModal()

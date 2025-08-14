@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { navLinks } from '../../constants/Navigation'
-import { BurgerMenu } from '../ui/BurgerMenu'
+import { navLinks } from '../../constants/Navigation.js'
+import { BurgerMenu } from '../ui/BurgerMenu.jsx'
 import logo from '/assets/logo.svg'
 
 export const Header = () => {

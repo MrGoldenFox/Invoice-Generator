@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import Modal from '../components/containers/Modal'
-import InvoiceCard from '../components/elements/invoiceCard'
-import { useModal } from '../context/ModalContext'
+import Modal from '../components/containers/Modal.jsx'
+import InvoiceCard from '../components/elements/invoiceCard.jsx'
+import { useModal } from '../context/ModalContext.jsx'
 
 const STORAGE_KEY = 'invoices'
 

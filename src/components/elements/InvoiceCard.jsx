@@ -1,6 +1,6 @@
-import { useModal } from '../../context/ModalContext'
-import Modal from '../containers/Modal'
-import LoadBtn from '../ui/LoadBtn'
+import { useModal } from '../../context/ModalContext.jsx'
+import Modal from '../containers/Modal.jsx'
+import LoadBtn from '../ui/LoadBtn.jsx'
 
 export default function InvoiceCard({ invoice, onDelete, onPreview }) {
 	const { isOpen, openModal } = useModal()

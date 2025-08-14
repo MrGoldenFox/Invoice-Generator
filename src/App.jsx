@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Header } from './components/containers/Header'
-import { ModalProvider } from './context/ModalContext'
-import ChecklistInvoices from './pages/ChecklistInvoices'
-import CreateInvoice from './pages/CreateInvoice'
-import Home from './pages/Home'
+import { Header } from './components/containers/Header.jsx'
+import { ModalProvider } from './context/ModalContext.jsx'
+import ChecklistInvoices from './pages/ChecklistInvoices.jsx'
+import CreateInvoice from './pages/CreateInvoice.jsx'
+import Home from './pages/Home.jsx'
 
 function App() {
 	return (

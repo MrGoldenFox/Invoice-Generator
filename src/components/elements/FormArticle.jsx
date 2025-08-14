@@ -1,6 +1,6 @@
 import { X } from 'lucide-react'
-import FormInput from './FormInput'
-import FormTextArea from './FormTextArea'
+import FormInput from './FormInput.jsx'
+import FormTextArea from './FormTextArea.jsx'
 
 export default function FormArticle({
 	title,
